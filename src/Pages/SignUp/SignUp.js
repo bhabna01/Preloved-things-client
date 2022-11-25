@@ -28,11 +28,15 @@ const Signup = () => {
                 console.log(user);
                 toast("User Created Successfully.");
                 handleUpdateUserProfile(data.name, userImg);
-                // updateUser({ displayName: data.name, photoURL: userImg })
-                //   .then(() => {
-                //     // saveUser(data);
-                //   })
-                //   .catch((err) => console.log(err));
+                const person = {
+                    name: data.name,
+                    email: data.email,
+                    role: data.role,
+                };
+                saveUser(person);
+
+
+
             })
             .catch((error) => {
                 console.log(error);
