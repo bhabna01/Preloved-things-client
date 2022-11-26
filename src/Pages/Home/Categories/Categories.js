@@ -1,28 +1,32 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-
+import Loading from '../../Shared/Loading/Loading';
+import CategoryCard from './CategoryCard';
+import { useQuery } from '@tanstack/react-query';
 const Categories = () => {
-    const [categories, setCategories] = useState([]);
-    useEffect(() => {
-        fetch('http://localhost:5000/categories')
-            .then(res => res.json())
-            .then(data => setCategories(data))
+    const { data: categoriesName = [], refetch, isLoading } = useQuery({
+        queryKey: ['categoriesName'],
+        queryFn: async () => {
+            const res = await fetch('http://localhost:5000/categoryName');
+            const data = await res.json();
+            return data
+        }
+    })
 
-    }, [])
+    if (isLoading) {
+        return <Loading></Loading>
+    }
     return (
-        <div>
-            <h4 className='text-center font-bold text-4xl mb-12'>Featured Products</h4>
-
-            <div className='flex justify-between '>
+        <div className="">
+            <h1 className="text-5xl">Book Categories</h1>
+            <div className='grid mt-8 gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-4'>
                 {
-                    categories.map(category => <div className="card w-96 bg-primary text-primary-content mb-12" key={category.category_id}>
-                        <div className="card-body text-center">
-                            <Link to={`/category/${category.category_id}`}>{category.category_name}</Link>
-                        </div>
-                    </div>)
+                    categoriesName.map(card => <CategoryCard
+                        key={card._id}
+                        card={card}
+                    ></CategoryCard>)
                 }
             </div>
-
         </div>
     );
 };
