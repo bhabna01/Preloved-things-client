@@ -3,7 +3,8 @@ import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../../../Contexts/AuthProvider/AuthProvider";
+import { AuthContext } from "../../../../context/AuthProvider";
+// import { AuthContext } from "../../../../Contexts/AuthProvider/AuthProvider";
 import Loading from "../../../Shared/Loading/Loading";
 
 const AddProduct = () => {
@@ -24,11 +25,11 @@ const AddProduct = () => {
     const cat_name = data.category;
     console.log(cat_name);
     if (cat_name === "Job Preparation") {
-        
-          setCid(1);
-          console.log(cid,"true")
-      }
-      console.log(cid,"cid")
+
+      setCid(1);
+      console.log(cid, "true")
+    }
+    console.log(cid, "cid")
     const image = data.image[0];
     const formData = new FormData();
     formData.append("image", image);
@@ -54,7 +55,7 @@ const AddProduct = () => {
             date: date,
             number: data.number,
             category: data.category,
-            
+
             condition: data.condition,
             description: data.description,
           };
@@ -179,7 +180,7 @@ const AddProduct = () => {
           <select
             {...register("category", { required: true })}
             className="select select-bordered w-full max-w-xs mt-3"
-            //   defaultValue={"Select Book Category"}
+          //   defaultValue={"Select Book Category"}
           >
             <option value="" disabled>
               Select Book Category
