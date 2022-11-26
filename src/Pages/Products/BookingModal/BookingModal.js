@@ -7,20 +7,13 @@ import { AuthContext } from "../../../context/AuthProvider";
 const BookingModal = ({ selected, setSelected }) => {
   console.log("Modal info", selected);
   const {
-    _id,
-    image,
-    name,
-    condition,
-    location,
-    price,
-    number,
-    description,
-    oldPrice,
-    seller_dp,
+
+    product_name,
+    resale_price,
+
     seller_name,
     seller_email,
-    date,
-    time,
+
   } = selected;
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -35,7 +28,7 @@ const BookingModal = ({ selected, setSelected }) => {
 
     const bookingInfo = {
 
-      bookName: selected.name,
+      productName: selected.product_name,
       buyerName: name,
       buyerEmail: email,
       buyerPhone: phone,
@@ -43,7 +36,7 @@ const BookingModal = ({ selected, setSelected }) => {
       bookingDate,
       seller_name,
       seller_email,
-      price,
+      resale_price,
     };
     console.log(bookingInfo);
 
@@ -103,14 +96,14 @@ const BookingModal = ({ selected, setSelected }) => {
             <input
               name="bookName"
               type="text"
-              defaultValue={name}
+              defaultValue={product_name}
               readOnly={true}
               className="input w-full input-bordered"
             />
             <input
               type="text"
               name="price"
-              defaultValue={price + " TK"}
+              defaultValue={resale_price + " TK"}
               readOnly={true}
               className="input w-full input-bordered "
             />
