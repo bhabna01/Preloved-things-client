@@ -18,8 +18,8 @@ const Categories = () => {
     }
     return (
         <div className="">
-            <h1 className="text-5xl">Book Categories</h1>
-            <div className='grid mt-8 gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-4'>
+            <h1 className="text-center font-bold text-4xl">Featured Categories</h1>
+            <div className='grid mt-12 mb-12 gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 '>
                 {
                     categoriesName.map(card => <CategoryCard
                         key={card._id}
