@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ProductCards = ({ category }) => {
+const ProductCards = ({ category, setSelected }) => {
     const { product_name, img, location, resale_price, orginal_price, years_of_use, seller_name, date } = category
     return (
         <div className="card card-side bg-base-100 shadow-xl mb-5">
@@ -15,7 +15,13 @@ const ProductCards = ({ category }) => {
                 <h2 className="">Date:{date}</h2>
 
                 <div className="card-actions justify-end">
-                    <button className="btn btn-primary">Book Now</button>
+                    <label
+                        htmlFor="my-modal"
+                        className="btn"
+                        onClick={() => setSelected(category)}
+                    >
+                        Book Now
+                    </label>
                 </div>
             </div>
         </div>

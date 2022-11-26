@@ -4,8 +4,8 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthProvider";
 // import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
 
-const BookingModal = ({ selectedBook, setSelectedBook }) => {
-  console.log("Modal info", selectedBook);
+const BookingModal = ({ selected, setSelected }) => {
+  console.log("Modal info", selected);
   const {
     _id,
     image,
@@ -21,7 +21,7 @@ const BookingModal = ({ selectedBook, setSelectedBook }) => {
     seller_email,
     date,
     time,
-  } = selectedBook;
+  } = selected;
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const handleBooking = (event) => {
@@ -34,8 +34,8 @@ const BookingModal = ({ selectedBook, setSelectedBook }) => {
     const bookingDate = new Date();
 
     const bookingInfo = {
-      _id,
-      bookName: selectedBook.name,
+
+      bookName: selected.name,
       buyerName: name,
       buyerEmail: email,
       buyerPhone: phone,
@@ -58,7 +58,7 @@ const BookingModal = ({ selectedBook, setSelectedBook }) => {
       .then(data => {
         console.log(data);
         if (data.acknowledged) {
-          setSelectedBook(null);
+          setSelected(null);
           // setIsBooked(true);
           navigate('/dashboard/myOrders');
           toast.success('Booking confirmed');
@@ -75,7 +75,7 @@ const BookingModal = ({ selectedBook, setSelectedBook }) => {
       <input type="checkbox" id="my-modal" className="modal-toggle" />
       <div className="modal">
         <div className="modal-box relative">
-          <label onClick={() => setSelectedBook(null)}
+          <label onClick={() => setSelected(null)}
             htmlFor="my-modal"
             className="btn btn-sm btn-circle absolute right-2 top-2"
           >
