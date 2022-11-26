@@ -22,21 +22,21 @@ const AllBuyers = () => {
     },
   });
   console.log(allBuyers);
-  const handleMakeAdmin = id => {
-    fetch(`http://localhost:5000/users/admin/${id}`, {
-      method: 'PUT',
-      headers: {
-        authorization: `bearer ${localStorage.getItem('accessToken')}`
-      }
-    })
-      .then(res => res.json())
-      .then(data => {
-        if (data.modifiedCount > 0) {
-          toast.success('Make admin successful.')
-          refetch();
-        }
-      })
-  }
+  // const handleMakeAdmin = id => {
+  //   fetch(`http://localhost:5000/users/admin/${id}`, {
+  //     method: 'PUT',
+  //     // headers: {
+  //     //   authorization: `bearer ${localStorage.getItem('accessToken')}`
+  //     // }
+  //   })
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       if (data.modifiedCount > 0) {
+  //         toast.success('Make admin successful.')
+  //         refetch();
+  //       }
+  //     })
+  // }
   return (
     <div>
       <h3 className="text-3xl mb-5">All Buyers</h3>
@@ -70,7 +70,7 @@ const AllBuyers = () => {
                   </td>
                   <td>{buyers.name}</td>
                   <td>{buyers.email}</td>
-                  <td>{buyers?.role !== 'admin' && <button onClick={() => handleMakeAdmin(buyers._id)} className='btn btn-xs btn-primary'>Make Admin</button>}</td>
+                  {/* <td>{buyers?.role !== 'admin' && <button onClick={() => handleMakeAdmin(buyers._id)} className='btn btn-xs btn-primary'>Make Admin</button>}</td> */}
 
                   {/* <td> */}
                   {/* <button className="btn btn-primary btn-sm">Advertised</button> */}

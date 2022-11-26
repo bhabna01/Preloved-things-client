@@ -30,7 +30,7 @@ const MyProducts = () => {
             <tr>
               <th></th>
               <th>Photo</th>
-              <th>Book Name</th>
+              <th>Product Name</th>
               <th>Price</th>
               <th>Status</th>
               <th>Advertisement</th>
