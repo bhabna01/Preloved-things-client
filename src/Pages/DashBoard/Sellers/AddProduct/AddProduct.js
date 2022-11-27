@@ -55,7 +55,7 @@ const AddProduct = () => {
             date: date,
             number: data.number,
             category_name: data.category,
-
+            years_of_use: data.you,
             condition: data.condition,
             description: data.description,
           };
@@ -169,6 +169,22 @@ const AddProduct = () => {
           />
           {errors.number && (
             <p className="text-red-500">{errors.number.message}</p>
+          )}
+        </div>
+        <div className="form-control w-full max-w-xs">
+          <label className="label">
+            {" "}
+            <span className="label-text">Years of use</span>
+          </label>
+          <input
+            type="text"
+            {...register("you", {
+              required: true,
+            })}
+            className="input input-bordered w-full max-w-xs"
+          />
+          {errors.number && (
+            <p className="text-red-500">{errors.you.message}</p>
           )}
         </div>
 
