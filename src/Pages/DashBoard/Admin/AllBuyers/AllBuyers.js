@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../../context/AuthProvider";
@@ -22,6 +22,7 @@ const AllBuyers = () => {
     },
   });
   console.log(allBuyers);
+  const [buyers, setBuyers] = useState(allBuyers);
   // const handleMakeAdmin = id => {
   //   fetch(`http://localhost:5000/users/admin/${id}`, {
   //     method: 'PUT',
@@ -37,7 +38,25 @@ const AllBuyers = () => {
   //       }
   //     })
   // }
-
+  const handleDelete = (id) => {
+    const proceed = window.confirm(
+      "Are you sure, you want to delete this sellers?"
+    );
+    if (proceed) {
+      fetch(`http://localhost:5000/users/admin/${id}`, {
+        method: "DELETE",
+        // authorization: `Bearer ${localStorage.getItem("tourist-man-token")}`,
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.deletedCount > 0) {
+            const remaining = buyers.filter((buyers) => buyers._id !== id);
+            setBuyers(remaining);
+            alert("User deleted successfully");
+          }
+        });
+    }
+  };
   return (
     <div>
       <h3 className="text-3xl mb-5">All Buyers</h3>
@@ -88,7 +107,8 @@ const AllBuyers = () => {
                                     booking.price && booking.paid && <span className='text-green-500'>Paid</span>
                                 } */}
                   {/* </td> */}
-                  <td><button className="btn btn-warning btn-sm">Delete</button></td>
+                  <td></td>
+                  <button onClick={() => handleDelete(buyers._id)} className="btn btn-warning btn-sm">Delete</button>
                 </tr>
               ))}
           </tbody>
