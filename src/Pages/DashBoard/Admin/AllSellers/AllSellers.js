@@ -57,6 +57,22 @@ const AllSellers = () => {
         });
     }
   };
+  const handleVerify = (id) => {
+    fetch(`http://localhost:5000/users/seller/${id}`, {
+      method: 'PUT',
+      // headers: {
+      //     authorization: `bearer ${localStorage.getItem('accessToken')}`
+      // }
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.modifiedCount > 0) {
+
+          toast.success('User Verified successfully.')
+          refetch();
+        }
+      })
+  }
   return (
     <div>
       <h3 className="text-3xl mb-5">All Sellers</h3>
@@ -92,9 +108,12 @@ const AllSellers = () => {
                   <td>{sellers.name}</td>
                   <td>{sellers.email}</td>
                   <td>
-                    <button className="btn btn-primary btn-sm">
-                      Not Verified
-                    </button>
+                    {sellers.status === 'Verified' ? <button className="btn btn-secondary btn-sm">
+                      {sellers.status}
+                    </button> : <button onClick={() => handleVerify(sellers._id)} className="btn btn-danger btn-sm">
+                      Unvarified
+                    </button>}
+
                   </td>
                   <td>{sellers?.role !== 'admin' && <button onClick={() => handleMakeAdmin(sellers._id)} className='btn btn-xs btn-primary'>Make Admin</button>}</td>
 

@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import toast from "react-hot-toast";
 import { Navigate, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthProvider";
-// import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
+
 
 const BookingModal = ({ selected, setSelected }) => {
   console.log("Modal info", selected);
