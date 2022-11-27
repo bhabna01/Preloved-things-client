@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../../context/AuthProvider";
-// import { AuthContext } from "../../../../Contexts/AuthProvider/AuthProvider";
+
 const AllBuyers = () => {
   const { user } = useContext(AuthContext);
 

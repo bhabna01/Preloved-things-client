@@ -45,15 +45,15 @@ const MyProducts = () => {
                   <td>
                     {" "}
                     <img
-                      src={product.image}
+                      src={product.img}
                       alt=""
                       width="50px"
                       height=""
                       className=""
                     />{" "}
                   </td>
-                  <td>{product.name}</td>
-                  <td>{product.price}</td>
+                  <td>{product.product_name}</td>
+                  <td>{product.resale_price}</td>
                   <td>Available</td>
 
                   <td>

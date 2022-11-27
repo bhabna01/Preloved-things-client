@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../../context/AuthProvider";
-// import { AuthContext } from "../../../../Contexts/AuthProvider/AuthProvider";
+
 import Loading from "../../../Shared/Loading/Loading";
 
 const AddProduct = () => {
@@ -18,13 +18,13 @@ const AddProduct = () => {
   const { user } = useContext(AuthContext);
   console.log(user);
   const imageHostKey = process.env.REACT_APP_imgbb_key;
-
+  console.log(imageHostKey)
   const navigate = useNavigate();
 
   const handleAddProduct = (data) => {
     const cat_name = data.category;
     console.log(cat_name);
-    if (cat_name === "Job Preparation") {
+    if (cat_name === "Cloths") {
 
       setCid(1);
       console.log(cid, "true")
@@ -46,21 +46,21 @@ const AddProduct = () => {
           const bookInfo = {
             seller_name: user.displayName,
             seller_email: user.email,
-            name: data.bookName,
-            image: imgData.data.url,
-            price: data.price,
-            oldPrice: data.oldPrice,
+            product_name: data.productName,
+            img: imgData.data.url,
+            resale_price: data.price,
+            orginal_price: data.oldPrice,
             location: data.location,
             time: data.time,
             date: date,
             number: data.number,
-            category: data.category,
+            category_name: data.category,
 
             condition: data.condition,
             description: data.description,
           };
 
-          // save doctor information to the database
+          // save information to the database
           fetch("http://localhost:5000/products", {
             method: "POST",
             headers: {
@@ -72,7 +72,7 @@ const AddProduct = () => {
             .then((res) => res.json())
             .then((result) => {
               console.log(result);
-              toast.success(`${data.bookName} is added successfully`);
+              toast.success(`${data.productName} is added successfully`);
               navigate("/dashboard/myProducts");
             });
         }
@@ -85,7 +85,7 @@ const AddProduct = () => {
 
   return (
     <div className="mx-auto w-3/4 p-7">
-      <h2 className="text-4xl">Add A Book For Sale</h2>
+      <h2 className="text-4xl">Add A Product For Sale</h2>
       <form
         onSubmit={handleSubmit(handleAddProduct)}
         className="w-full mx-auto"
@@ -93,24 +93,24 @@ const AddProduct = () => {
         <div className="form-control w-full max-w-xs">
           <label className="label">
             {" "}
-            <span className="label-text">Book Name</span>
+            <span className="label-text">Product Name</span>
           </label>
           <input
             type="text"
-            {...register("bookName", {
-              required: "Book Name is Required",
+            {...register("productName", {
+              required: "product Name is Required",
             })}
             className="input input-bordered w-full max-w-xs"
           />
           {errors.bookName && (
-            <p className="text-red-500">{errors.bookName.message}</p>
+            <p className="text-red-500">{errors.productName.message}</p>
           )}
         </div>
 
         <div className="form-control w-full max-w-xs">
           <label className="label">
             {" "}
-            <span className="label-text">Book Resale Price (Tk.)</span>
+            <span className="label-text">Product Resale Price (Tk.)</span>
           </label>
           <input
             type="text"
@@ -183,42 +183,35 @@ const AddProduct = () => {
           //   defaultValue={"Select Book Category"}
           >
             <option value="" disabled>
-              Select Book Category
+              Select Product Category
             </option>
-            <option onChange={() => setCid("1")} value="Job Preparation">
-              Job Preparation
-            </option>
-            <option onChange={() => setCid("5")} value="Admission Test">
-              Admission Test
+            <option onChange={() => setCid("1")} value="Cloths">
+              Cloths
             </option>
 
-            <option onChange={() => setCid("2")} value="University Academic">
-              University Academic
+
+            <option onChange={() => setCid("2")} value="Bags">
+              Bags
             </option>
-            <option onChange={() => setCid("3")} value="Science Fiction">
-              Science Fiction
+            <option onChange={() => setCid("3")} value="Shoes">
+              Shoes
             </option>
-            <option onChange={() => setCid("4")} value="Novel and Story">
-              Novel and Story
-            </option>
-            <option onChange={() => setCid("6")} value="Others">
-              Others
-            </option>
+
           </select>
         </div>
         <div className="form-control w-full max-w-xs">
           <label className="label">
             {" "}
-            <span className="label-text">Book Condition</span>
+            <span className="label-text">Product Condition</span>
           </label>
           <select
             {...register("condition", { required: true })}
             className="select select-bordered w-full max-w-xs mt-3"
-            defaultValue={"Good"}
+            defaultValue={"good"}
           >
-            <option value="Excellent">Excellent</option>
-            <option value="Good">Good</option>
-            <option value="Fair">Fair</option>
+            <option value="Excellent">excellent</option>
+            <option value="Good">good</option>
+            <option value="Fair">fair</option>
           </select>
         </div>
         {/* <div className="form-control w-full max-w-xs">

@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
-import useToken from "../../Hooks/useToken";
+// import useToken from "../../Hooks/useToken";
 import SocialLogin from "../SocialLogin/SocialLogin";
 const Signup = () => {
     const {
@@ -15,12 +15,12 @@ const Signup = () => {
     const [signUpError, setSignUPError] = useState("");
     const [createdUserEmail, setCreatedUserEmail] = useState("");
     const [userImg, setUserImg] = useState("");
-    const [token] = useToken(createdUserEmail);
+    // const [token] = useToken(createdUserEmail);
     const navigate = useNavigate();
 
-    if (token) {
-        navigate('/');
-    }
+    // if (token) {
+    //     navigate('/');
+    // }
     const handleSignUp = (data) => {
 
         setSignUPError("");
@@ -70,7 +70,7 @@ const Signup = () => {
             .then((data) => {
                 setCreatedUserEmail(data.email);
                 console.log(data);
-                // navigate("/");
+                navigate("/");
             });
     };
     return (
