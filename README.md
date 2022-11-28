@@ -10,3 +10,5 @@ Webiste-Link:[https://preloved-things.web.app/]
 * daysiUI
 * react-router-dom 
 * react-toast
+adminEmail: <elon@gmail.com>
+adminPassword: <ABC123#>
