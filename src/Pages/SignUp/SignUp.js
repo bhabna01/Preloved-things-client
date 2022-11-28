@@ -59,7 +59,7 @@ const Signup = () => {
             .catch((error) => console.error(error));
     };
     const saveUser = (user) => {
-        fetch("http://localhost:5000/users", {
+        fetch("https://preloved-things-server.vercel.app/users", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

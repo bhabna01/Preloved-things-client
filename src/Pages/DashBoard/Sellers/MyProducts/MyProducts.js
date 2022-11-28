@@ -7,7 +7,7 @@ import { AuthContext } from "../../../../context/AuthProvider";
 const MyProducts = () => {
   const { user } = useContext(AuthContext);
 
-  const url = `http://localhost:5000/myProducts?email=${user?.email}`;
+  const url = `https://preloved-things-server.vercel.app/myProducts?email=${user?.email}`;
 
   const { data: products = [], refetch } = useQuery({
     queryKey: ["products", user?.email],
@@ -24,7 +24,7 @@ const MyProducts = () => {
   console.log(products);
   const handleAdvertisement = (id) => {
 
-    fetch(`http://localhost:5000/seller/myProduct/${id}`, {
+    fetch(`https://preloved-things-server.vercel.app/seller/myProduct/${id}`, {
       method: 'PATCH',
       // headers: {
       //     authorization: `bearer ${localStorage.getItem('accessToken')}`

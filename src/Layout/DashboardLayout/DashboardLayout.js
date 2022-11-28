@@ -4,12 +4,16 @@ import { AuthContext } from "../../context/AuthProvider";
 
 import useAdmin from "../../Hooks/useAdmin";
 import useSeller from "../../Hooks/useSeller";
+import Loading from "../../Pages/Shared/Loading/Loading";
 import Navbar from "../../Pages/Shared/Navbar/Navbar";
 
 const DashBoardLayout = () => {
-  const { user } = useContext(AuthContext);
+  const { user, loading } = useContext(AuthContext);
   const [isAdmin] = useAdmin(user?.email);
   const [isSeller] = useSeller(user?.email);
+  if (loading) {
+    <Loading></Loading>
+  }
   return (
     <div>
       <Navbar></Navbar>

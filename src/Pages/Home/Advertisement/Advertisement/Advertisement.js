@@ -3,7 +3,7 @@ import React from 'react';
 import AdvertisementItem from './AdvertisementItem';
 
 const Advertisement = () => {
-  const url = `http://localhost:5000/products?isAdvertised=yes`;
+  const url = `https://preloved-things-server.vercel.app/products?isAdvertised=yes`;
 
   const { data: products = [], refetch } = useQuery({
     queryKey: ["products"],
@@ -19,7 +19,7 @@ const Advertisement = () => {
   });
   console.log("from Advertisement", products)
   return (
-    <div>
+    <div className='mb-12'>
       {products.length && <>
         <h1 className="text-center font-bold text-4xl">
           Advertisement Product

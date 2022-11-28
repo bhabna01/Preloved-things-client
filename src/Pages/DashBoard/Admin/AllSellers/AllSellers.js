@@ -7,7 +7,7 @@ import { AuthContext } from "../../../../context/AuthProvider";
 const AllSellers = () => {
   const { user } = useContext(AuthContext);
 
-  const url = "http://localhost:5000/allSellers?role=seller";
+  const url = "https://preloved-things-server.vercel.app/allSellers?role=seller";
 
   const { data: allSellers = [], refetch } = useQuery({
     queryKey: ["allSellers", user?.email],
@@ -24,7 +24,7 @@ const AllSellers = () => {
   const [sellers, setSellers] = useState(allSellers);
   console.log(allSellers);
   const handleMakeAdmin = id => {
-    fetch(`http://localhost:5000/users/admin/${id}`, {
+    fetch(`https://preloved-things-server.vercel.app/users/admin/${id}`, {
       method: 'PUT',
       headers: {
         authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -43,7 +43,7 @@ const AllSellers = () => {
       "Are you sure, you want to delete this sellers?"
     );
     if (proceed) {
-      fetch(`http://localhost:5000/users/admin/${id}`, {
+      fetch(`https://preloved-things-server.vercel.app/users/admin/${id}`, {
         method: "DELETE",
         // authorization: `Bearer ${localStorage.getItem("tourist-man-token")}`,
       })
@@ -58,7 +58,7 @@ const AllSellers = () => {
     }
   };
   const handleVerify = (id) => {
-    fetch(`http://localhost:5000/users/seller/${id}`, {
+    fetch(`https://preloved-things-server.vercel.app/users/seller/${id}`, {
       method: 'PUT',
       // headers: {
       //     authorization: `bearer ${localStorage.getItem('accessToken')}`

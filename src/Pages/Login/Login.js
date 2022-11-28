@@ -66,8 +66,8 @@ const Login = () => {
                     </div>
                 </form>
                 <p>New to Doctors Portal <Link className='text-primary' to="/signup">Create new Account</Link></p>
-                <div className="divider">OR</div>
-                <button className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
+                {/* <div className="divider">OR</div>
+                <button className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button> */}
             </div>
         </div>
     );

@@ -7,7 +7,7 @@ import { AuthContext } from "../../../../context/AuthProvider";
 const AllBuyers = () => {
   const { user } = useContext(AuthContext);
 
-  const url = 'http://localhost:5000/allBuyers?role=buyer';
+  const url = 'https://preloved-things-server.vercel.app/allBuyers?role=buyer';
 
   const { data: allBuyers = [], refetch } = useQuery({
     queryKey: ["allBuyers", user?.email],
@@ -24,7 +24,7 @@ const AllBuyers = () => {
   console.log(allBuyers);
   const [buyers, setBuyers] = useState(allBuyers);
   // const handleMakeAdmin = id => {
-  //   fetch(`http://localhost:5000/users/admin/${id}`, {
+  //   fetch(`https://preloved-things-server.vercel.app/users/admin/${id}`, {
   //     method: 'PUT',
   //     // headers: {
   //     //   authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -43,7 +43,7 @@ const AllBuyers = () => {
       "Are you sure, you want to delete this sellers?"
     );
     if (proceed) {
-      fetch(`http://localhost:5000/users/admin/${id}`, {
+      fetch(`https://preloved-things-server.vercel.app/users/admin/${id}`, {
         method: "DELETE",
         // authorization: `Bearer ${localStorage.getItem("tourist-man-token")}`,
       })

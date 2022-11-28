@@ -40,7 +40,7 @@ const BookingModal = ({ selected, setSelected }) => {
     };
     console.log(bookingInfo);
 
-    fetch('http://localhost:5000/bookings', {
+    fetch('https://preloved-things-server.vercel.app/bookings', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
