@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../../context/AuthProvider";
-// import { AuthContext } from "../../../../Contexts/AuthProvider/AuthProvider";
+
 const MyProducts = () => {
   const { user } = useContext(AuthContext);
 
@@ -79,17 +79,7 @@ const MyProducts = () => {
                   </td>
 
                   <td>
-                    {product.isAdvertised === 'no' ? <>
-                      <Link>
-                        <button
-                          onClick={() => handleAdvertisement(product._id)}
-                          className="btn btn-primary btn-sm"
-                        >
-                          Make Advertisement
-                        </button>
-                      </Link>
-                    </> : <>
-
+                    {(product.isAdvertised) ? <>
                       <Link>
                         <button
 
@@ -97,7 +87,19 @@ const MyProducts = () => {
                         >
                           Advertised
                         </button>
-                      </Link></>}
+                      </Link></>
+
+                      : <>
+                        <Link>
+                          <button
+                            onClick={() => handleAdvertisement(product._id)}
+                            className="btn btn-primary btn-sm"
+                          >
+                            Make Advertisement
+                          </button>
+                        </Link>
+                      </>
+                    }
 
                     {/* {
                                     booking.price && !booking.paid && <Link

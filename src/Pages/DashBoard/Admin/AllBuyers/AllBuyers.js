@@ -90,23 +90,7 @@ const AllBuyers = () => {
                   </td>
                   <td>{buyers.name}</td>
                   <td>{buyers.email}</td>
-                  {/* <td>{buyers?.role !== 'admin' && <button onClick={() => handleMakeAdmin(buyers._id)} className='btn btn-xs btn-primary'>Make Admin</button>}</td> */}
 
-                  {/* <td> */}
-                  {/* <button className="btn btn-primary btn-sm">Advertised</button> */}
-                  {/* {
-                                    booking.price && !booking.paid && <Link
-                                        to={`/dashboard/payment/${booking._id}`}
-                                    >
-                                        <button
-                                            className='btn btn-primary btn-sm'
-                                        >Pay</button>
-                                    </Link>
-                                }
-                                {
-                                    booking.price && booking.paid && <span className='text-green-500'>Paid</span>
-                                } */}
-                  {/* </td> */}
                   <td></td>
                   <button onClick={() => handleDelete(buyers._id)} className="btn btn-warning btn-sm">Delete</button>
                 </tr>
